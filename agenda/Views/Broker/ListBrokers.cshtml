@@ -20,7 +20,7 @@
                 <th>Nom </th>
                 <th>Prénom</th>
                 <th>Profil</th>
-
+                <th>Modif.</th>
             </tr>
         </thead>
         <tbody>
@@ -31,8 +31,16 @@
                     <td>@Appointment.Lastname</td>
                     <td>@Appointment.Firstname</td>
                     <td><a class="btn btn-info"
-                    asp-action="Profil">
+                    asp-action="Afficher"
+                    asp-route-id="@Appointment.IdBroker"
+                    >
                     Voir Profil
+                </a></td>
+                    <td><a class="btn btn-info"
+                    asp-action="Edit"
+                    asp-route-id="@Appointment.IdBroker"
+                    >
+                    Modifier
                 </a></td>
 
                 </tr>            

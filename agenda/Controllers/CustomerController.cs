@@ -33,26 +33,39 @@ namespace agenda.Controllers
             return View();
         }
 
-        // GET: CustomerController/Create
-        public ActionResult Create()
+        public ActionResult AddCustomer()
         {
             return View();
         }
-
-        // POST: CustomerController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult AddCustomer(Customer customer)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _db.Customers.Add(customer);
+            _db.SaveChanges();
+            return RedirectToAction("listCustomers");
+
         }
+
+        // GET: CustomerController/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
+
+        //// POST: CustomerController/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)

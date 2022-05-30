@@ -46,15 +46,10 @@ namespace agenda.Controllers
         [HttpPost]
         public IActionResult CreateBroker(Broker broker)
         {
-     
-            if (ModelState.IsValid)
-            {
                 _db.Brokers.Add(broker);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(broker);
+                return RedirectToAction("listBrokers");
+    
         }
 
         // POST: BrokerController/Create
@@ -75,22 +70,29 @@ namespace agenda.Controllers
         // GET: BrokerController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Broker? bro = _db.Brokers.Find(id);
+            return View(bro);
         }
 
         // POST: BrokerController/Edit/5
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Broker bro)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            //try
+            //{
+            //    return RedirectToAction(nameof(ListBrokers));
+            //}
+            //catch
+            //{
+
+            //    return View(bro);
+            //}
+
+           
+            _db.Brokers.Update(bro);
+            _db.SaveChanges();
+            return RedirectToAction("ListBrokers");
         }
 
         // GET: BrokerController/Delete/5
@@ -113,5 +115,15 @@ namespace agenda.Controllers
                 return View();
             }
         }
+
+
+        public ActionResult Afficher(int id)
+        {
+            Broker? bro = _db.Brokers.Find(id);
+            return View(bro);
+        }
+
     }
+
+
 }
