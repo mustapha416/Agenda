@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Broker>
+@{
+    ViewData["Title"] = "liste des brokers";
+}
+
+<div class="text-center">
+    <h1 class="display-6">Aujourd'hui, on est le</h1>
+    <p class="display-6">@DateTime.Today.ToString("d")</p>
+</div>
+@if(Model.Count()>0)
+{
+
+
+    <div class="text-center">
+
+        <table class="table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Nom </th>
+                <th>Prénom</th>
+                <th>Profil</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Appointment in Model)
+            {
+                <tr>
+                    <td>@Appointment.IdBroker</td>
+                    <td>@Appointment.Lastname</td>
+                    <td>@Appointment.Firstname</td>
+                    <td><a class="btn btn-info"
+                    asp-action="Profil">
+                    Voir Profil
+                </a></td>
+
+                </tr>            
+            }
+        </tbody>
+    </table>
+    </div>
+}

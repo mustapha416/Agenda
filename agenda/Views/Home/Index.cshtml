@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "INDEX";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h1>index home</h1>
+    
+<h2>On est le</h2>
+<h2>@DateTime.Today.ToString("d") </h2>
+
+@*<a href="../Views/Broker/AddBroker">Ajouter un broker</a>*@
+<a class="btn primary-btn" asp-area="" asp-controller="Broker" asp-action="Add">Ajouter un broker</a>
+<a class="btn primary-btn" asp-area="" asp-controller="Broker" asp-action="Edit">modifier un broker</a>
