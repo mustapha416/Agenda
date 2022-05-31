@@ -1,14 +1,14 @@
-﻿@model agenda.Models.Broker
+﻿@model agenda.Models.Customer
 
 @{
-    ViewData["Title"] = "Profil Broker";
-
+    ViewData["Title"] = "ProfilCustomer";
+    //Layout = "Afficher.cshtml";
 }
 
-<h1>Profil</h1>
+<h1>ProfilCustomer</h1>
 
 <div>
-    <h4>Broker</h4>
+    <h4>Customer</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -35,9 +35,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Budget)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Budget)
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdBroker">Edit</a> |
-    <a asp-action="ListBrokers">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.IdCustomer">Edit</a> |
+    <a asp-action="ListCustomers">Back to List</a>
 </div>

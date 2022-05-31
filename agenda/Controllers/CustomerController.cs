@@ -38,13 +38,14 @@ namespace agenda.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddCustomer(Customer customer)
+        public ActionResult AddCustomer(Customer customer)
         {
             _db.Customers.Add(customer);
             _db.SaveChanges();
             return RedirectToAction("listCustomers");
 
         }
+
 
         // GET: CustomerController/Create
         //public ActionResult Create()
@@ -68,45 +69,64 @@ namespace agenda.Controllers
         //}
 
         // GET: CustomerController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    return View();
+        //}
 
-        // POST: CustomerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //// POST: CustomerController/Edit/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: CustomerController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Customer? cust = _db.Customers.Find(id);  
+            return View(cust);
         }
+
+        public ActionResult ProfilCustomer(int id)
+        {
+            Customer? cust = _db.Customers.Find(id);
+            return View(cust);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            Customer? cust = _db.Customers.Find(id);
+            return View(cust);
+        }
+
+        // POST: BrokerController/Edit/5
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit(Customer cust)
+        {
+            _db.Customers.Update(cust);
+            _db.SaveChanges();
+            return RedirectToAction("ListCustomers");
+        }
+
 
         // POST: CustomerController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(Customer custom)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _db.Customers.Remove(custom);
+            _db.SaveChanges();
+            return RedirectToAction("ListCustomers");
         }
     }
 }

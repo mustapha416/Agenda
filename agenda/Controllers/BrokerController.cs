@@ -7,6 +7,7 @@ namespace agenda.Controllers
 {
     public class BrokerController : Controller
     {
+        
         readonly agendaContext _db;
 
         public BrokerController(agendaContext db)
@@ -122,6 +123,8 @@ namespace agenda.Controllers
             Broker? bro = _db.Brokers.Find(id);
             return View(bro);
         }
+
+
 
     }
 

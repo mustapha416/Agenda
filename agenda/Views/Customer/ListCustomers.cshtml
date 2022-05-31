@@ -14,29 +14,51 @@
     <div class="text-center">
 
         <table class="table" style="width:100%">
-        <thead>
-            <tr>
-                <th>Identifiant</th>
-                <th>Nom </th>
-                <th>Prénom</th>
-                <th>Mail </th>
-                <th>Téléphone</th>
-                <th>budget</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var Appointment in Model)
-            {
+            <thead>
                 <tr>
+                    <th>Identifiant</th>
+                    <th>Nom </th>
+                    <th>Prénom</th>
+                    <th>Mail </th>
+                    <th>Téléphone</th>
+                    <th>budget</th>
+                    <th>Profil</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                   var Mode = Model.OrderBy(s => s.Lastname);
+
+                
+               
+                @foreach (var Appointment in Mode)
+                {
+                    <tr>
                     <td>@Appointment.IdCustomer</td>
                     <td>@Appointment.Lastname</td>
                     <td>@Appointment.Firstname</td>
                     <td>@Appointment.Mail</td>
                     <td>@Appointment.PhoneNumber</td>
                     <td>@Appointment.Budget</td>
+                    <td><a class="btn btn-info"
+                    asp-action="ProfilCustomer"
+                    asp-route-id="@Appointment.IdCustomer"
+                    >
+                    Voir Profil
+                </a></td>
+                   <td><a class="btn btn-danger"
+                    asp-action="DeleteCustomer"
+                    asp-route-id="@Appointment.IdCustomer"
+                    >
+                    Supprimer
+                </a></td>
                 </tr>            
+            }
             }
         </tbody>
     </table>
     </div>
 }
+ 

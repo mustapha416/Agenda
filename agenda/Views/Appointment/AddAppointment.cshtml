@@ -1,0 +1,44 @@
+﻿@model agenda.Models.Appointment
+@{
+    ViewData["Title"] = "Ajouter un RDV";
+}
+
+    <title>Ajouter Appointment</title>
+
+
+<h4>RDV</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCustomer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DateHour" class="control-label">Date</label>
+                <input asp-for="DateHour" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label">Sujet</label>
+                <input asp-for="Subject" class="form-control" />
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-action="GetBrokers" asp-for="IdBroker" class="control-label">ID du Broker</label>
+                <select asp-for="IdBroker" asp-items="@ViewBag.Brokers" class="form-control">
+                <option>Choose...</option>
+
+      </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCustomer" class="control-label"></label>
+                <input asp-for="IdCustomer" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input asp-action="AddAppointment" type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListAppointment">Retour à la liste</a>
+</div>
+

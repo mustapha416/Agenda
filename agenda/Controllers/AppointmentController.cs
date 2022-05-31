@@ -17,5 +17,24 @@ namespace agenda.Controllers
             IEnumerable<Appointment> appointmentsList = _db.Appointments;
             return View(appointmentsList);
         }
+
+        public ActionResult AddAppointment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddAppointment(Appointment ap)
+        {
+            _db.Appointments.Add(ap);
+            _db.SaveChanges();
+            return RedirectToAction("listAppointment");
+
+        }
+
+        public void GetBrokers()
+        {
+            ViewBag.Brokers = _db.Brokers.ToList();
+        }
+
     }
 }

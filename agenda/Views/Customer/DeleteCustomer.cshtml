@@ -1,0 +1,45 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Suppression d'un customer";
+}
+
+
+<div class="d-flex justify-content-between">
+    <h1>Suppression d'un customer</h1>
+</div>
+<table class="table" style="width:100%">
+    <thead>
+        <tr>
+            <th>Identifiant</th>
+            <th>Nom </th>
+            <th>Prénom</th>
+            <th>Mail</th>
+            <th>Téléphone</th>
+            <th>Budget</th>
+            <th>Suppression</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.IdCustomer</td>
+            <td>@Model.Lastname</td>
+            <td>@Model.Firstname</td>
+            <td>@Model.Mail</td>
+            <td>@Model.PhoneNumber</td>
+            <td>@Model.Budget</td>
+            <td>
+                <form method="post">
+                    <input 
+                        type="submit" 
+                        class="btn btn-danger" 
+                        value="Confirmer suppression" />
+
+                    <a class="pt-1 btn btn-info" asp-action="ListCustomers">Retour aux voitures</a>
+                </form>
+            </td>
+        </tr>       
+        
+
+
+    </tbody>
+</table>
